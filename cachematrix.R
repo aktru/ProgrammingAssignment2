@@ -13,15 +13,15 @@
 ## functions for setting and getting value of cache
 
 makeCacheMatrix <- function(x = matrix()) {
-	m <- NULL						## defining variable m in the local environment
+	m <- NULL				## defining variable m in the local environment
 	set <- function(y = NULL) {		## defining function of set the value of the matrix
-		x <<- y						## defining variable x in the environment where the function was called 
-		m <<- NULL					## defining variable m in the environment where the function was called 
+		x <<- y				## defining variable x in the environment where the function was called 
+		m <<- NULL			## defining variable m in the environment where the function was called 
 	}
-	get <- function() x				## defining function of get the value of the matrix
+	get <- function() x			## defining function of get the value of the matrix
 	setinverse <- function(solve) m <<- solve ## defining function of set the value of the inverse of a matrix
 	getinverse <- function() m		## defining function of get the value of the inverse of a matrix
-	list (set = set, get = get, 	## defining list containing functions
+	list (set = set, get = get, 		## defining list containing functions
 		setinverse = setinverse,
 		getinverse = getinverse)
 }
@@ -32,14 +32,14 @@ makeCacheMatrix <- function(x = matrix()) {
 ## computes the inverse of a matrix and returns resulting value.
 
 cacheSolve <- function(x, ...) {
-		m <- x$getinverse()			## getting value from cache
-        if(!is.null(m)) {     		## if value in cache isn't NULL
+		m <- x$getinverse()		## getting value from cache
+        if(!is.null(m)) {     			## if value in cache isn't NULL
         	message("getting cached data")
-        	return(m)		  		## returning value from cache and finishing of the function
+        	return(m)		  	## returning value from cache and finishing of the function
         }
-        					  		## if value in cache is NULL then
-        data <- x$get()       		## getting a matrix for inverse
-        m <- solve(data)      		## inversing of a matrix
-        x$setinverse(m)       		## setting value to cache
-        m					  		## returning value and finishing of the function
+        					## if value in cache is NULL then
+        data <- x$get()       			## getting a matrix for inverse
+        m <- solve(data)      			## inversing of a matrix
+        x$setinverse(m)       			## setting value to cache
+        m					## returning value and finishing of the function
 }
