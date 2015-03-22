@@ -16,7 +16,7 @@ makeCacheMatrix <- function(x = matrix()) {
 	m <- NULL				## defining variable m in the local environment
 	set <- function(y = NULL) {		## defining function of set the value of the matrix
 		x <<- y				## defining variable x in the environment where the function was called 
-		m <<- NULL			## defining variable m in the environment where the function was called 
+		m <<- NULL			## similarly for variable m 
 	}
 	get <- function() x			## defining function of get the value of the matrix
 	setinverse <- function(solve) m <<- solve ## defining function of set the value of the inverse of a matrix
